@@ -1,0 +1,29 @@
+/*
+ * stm32mp135d-atk-hdmi.dts
+ */
+
+#include "stm32mp135d-atk.dts"
+
+/ {
+	model = "STM32MP135D-ATK Discovery Board";
+	compatible = "st,stm32mp135d-atk", "st,stm32mp135";
+
+	wifi_pwrseq: msc1-pwrseq {
+		compatible = "mmc-pwrseq-simple";
+		reset-gpios = <&gpioh 5 GPIO_ACTIVE_LOW>;
+	};
+};
+
+&sdmmc1 {
+	non-removable;
+	mmc-pwrseq = <&wifi_pwrseq>;
+};
+
+&uart7 {
+	pinctrl-names = "default", "sleep", "idle";
+	pinctrl-0 = <&uart7_pins_a>;
+	pinctrl-1 = <&uart7_sleep_pins_a>;
+	pinctrl-2 = <&uart7_idle_pins_a>;
+	uart-has-rtscts;
+	status = "okay";
+};
