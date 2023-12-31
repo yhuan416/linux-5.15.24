@@ -29,7 +29,6 @@ rm ${INSTALL_MOD_PATH}/lib/modules/5.15.24/source ${INSTALL_MOD_PATH}/lib/module
 if [ ! -e "${BOOTFS_PATH}" ]; then
     mkdir -p ${BOOTFS_PATH}
 fi
-rm -rf ${BOOTFS_PATH}/*
 
 # copy to bootfs
 echo "Copy to bootfs"
